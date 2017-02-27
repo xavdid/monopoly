@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en" ng-app="monopoly"><head><title>Monopoly!</title><meta name="viewport" content="width=device-width, initial-scale=1"><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><style>button:focus { outline-style: none; }
+button.list-group-item { text-align: center; }
+
+.list-group .glyphicon { margin-left: 50%; }
+
+.prize-group { padding-top: 10px; }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 50%;
+  }
+}
+</style></head><body ng-controller="MainController"><div class="container"><h1>Monopoly Prizes</h1><div class="btn-group"><label class="btn btn-default btn-lg" ng-model="alpha" uib-btn-radio="true"><span class="glyphicon glyphicon-sort-by-alphabet"></span></label><label class="btn btn-default btn-lg" ng-model="alpha" uib-btn-radio="false"><span class="glyphicon glyphicon-sort-by-attributes-alt"></span></label></div><h2>Prizes
+</h2><div class="list-group" ng-if="alpha"><button class="list-group-item" ng-repeat="id in prizeIds" ng-click="owned[id] = !owned[id]" type="button">{{ id }}
+<span class="glyphicon" ng-class="glyphClass(id)"></span></button></div><div class="groups" ng-if="!alpha"><div class="prize-group" ng-repeat="prize in prizes"><h3>{{ prizeNames[prize[0].substr(0,2)] || prize[0].substr(0,2) }}</h3><uib-progressbar value="progress(prize)" max="prize.length" type="{{progressType(prize)}}"></uib-progressbar><div class="list-group"><button class="list-group-item" ng-repeat="id in prize" ng-click="owned[id] = !owned[id]" type="button">{{ id }}
+<span class="glyphicon" ng-class="glyphClass(id)"></span></button></div></div></div></div><script src="_bundle.js"></script></body></html>
