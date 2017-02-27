@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# uses https://github.com/tschaub/gh-pages
+
+node_modules/.bin/gh-pages -d dist -t
