@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 # triggers watchify locally and will also be the build script in production
 
@@ -8,4 +8,4 @@ else
     COMMAND="watchify"
 fi
 
-eval "$COMMAND app.js -v -o $DEST_PATH/_bundle.js"
+eval "node_modules/.bin/$COMMAND app.js -v -o $DEST_PATH/_bundle.js"

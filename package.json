@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./build",
-    "prebuild": "npm run clean",
-    "clean": "rm -rf *.js *.html dist",
+    "clean": "rm -rf *.js dist",
     "deploy": "node_modules/.bin/gh-pages -d dist -t",
     "predeploy": "npm run build"
   },

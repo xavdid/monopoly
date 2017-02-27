@@ -1,11 +1,12 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 
+npm run clean
 
-DEST_PATH="dist/js"
+DEST_PATH="dist"
 
 mkdir -p $DEST_PATH
-touch dist/.nojekyll
+touch $DEST_PATH/.nojekyll
 
 tsc
 NODE_ENV=production DEST_PATH=$DEST_PATH ./jsbuild
-pug index.pug -o dist
+node_modules/.bin/pug index.pug -o $DEST_PATH
