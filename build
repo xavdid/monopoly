@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+
+DEST_PATH="dist/js"
+
+mkdir -p $DEST_PATH
+touch dist/.nojekyll
+
+tsc
+NODE_ENV=production DEST_PATH=$DEST_PATH ./jsbuild
+pug index.pug -o dist
