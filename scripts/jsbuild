@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 # triggers watchify locally and will also be the build script in production
 

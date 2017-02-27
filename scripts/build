@@ -1,7 +1,8 @@
-#!/bin/bash -ex
+#!/bin/bash -e
 
 npm run clean
 
+# need to change path here and in Procfile.dev
 DEST_PATH="dist"
 
 mkdir -p $DEST_PATH
