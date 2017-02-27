@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "typescript.tsdk": "/Users/david/.nvm/versions/node/v7.6.0/lib/node_modules/typescript/lib",
+    "standard.enable": false,
+    "files.exclude": {
+      "*.js": true,
+      "*.html": true
+    }
+}

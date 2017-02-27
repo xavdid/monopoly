@@ -1,0 +1,3 @@
+client: ./jsbuild
+typescript: tsc -w
+pug: pug -w index.pug
