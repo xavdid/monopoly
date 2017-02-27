@@ -1,5 +1,9 @@
 #!/bin/bash
 
+DEST_PATH="dist/js"
+
+mkdir -p $DEST_PATH
+
 # triggers watchify locally and will also be the build script in production
 
 if [ "$NODE_ENV" = "production" ];then
@@ -8,4 +12,4 @@ else
     COMMAND="watchify"
 fi
 
-eval "$COMMAND app.js -v -o dist/_bundle.js"
+eval "$COMMAND app.js -v -o $DEST_PATH/_bundle.js"

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && mkdir -p dist && NODE_ENV=production ./jsbuild && pug index.pug -o dist",
+    "build": "tsc && NODE_ENV=production ./jsbuild && pug index.pug -o dist",
     "prebuild": "npm run clean",
     "clean": "rm -rf *.js *.html dist",
     "deploy": "node_modules/.bin/gh-pages -d dist",
