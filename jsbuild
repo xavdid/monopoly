@@ -8,4 +8,4 @@ else
     COMMAND="watchify"
 fi
 
-eval "$COMMAND app.js -v -o _bundle.js"
+eval "$COMMAND app.js -v -o dist/_bundle.js"

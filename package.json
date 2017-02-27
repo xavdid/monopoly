@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && NODE_ENV=production ./jsbuild && pug index.pug",
+    "build": "tsc && mkdir -p dist && NODE_ENV=production ./jsbuild && pug index.pug -o dist",
     "prebuild": "npm run clean",
-    "clean": "rm -f *.js *.html"
+    "clean": "rm -rf *.js *.html dist",
+    "deploy": "node_modules/.bin/gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "keywords": [],
   "author": "David Brownman <beamneocube@gmail.com> (https://davidbrownman.com)",
@@ -24,6 +26,7 @@
     "typescript": "^2.2.1"
   },
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "watchify": "^3.9.0"
   }
 }

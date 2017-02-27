@@ -4,6 +4,7 @@
     "standard.enable": false,
     "files.exclude": {
       "*.js": true,
-      "*.html": true
+      "*.html": true,
+      "dist": true
     }
 }
