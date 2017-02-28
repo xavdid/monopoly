@@ -54,8 +54,7 @@ angular.module('monopoly', [
         }
     };
     $scope.isOwned = (id) => {
-        let owned = $scope.storage.owned[id];
-        return owned !== undefined;
+        return $scope.storage.owned[id];
     };
     $scope.toggle = (id) => {
         $scope.storage.owned[id] = !$scope.storage.owned[id];
