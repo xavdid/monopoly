@@ -5,6 +5,9 @@
 
 if [ "$TRAVIS" = "true" ]
 then
+  git config --global user.email "gh-pages@travis-ci"
+  git config --global user.name "Auto Deploy"
+
   node_modules/.bin/gh-pages -d dist -t --repo https://$GH_TOKEN@github.com/xavdid/monopoly.git
 else
   node_modules/.bin/gh-pages -d dist -t
