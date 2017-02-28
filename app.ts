@@ -2,19 +2,28 @@ import angular = require('angular');
 import flatten = require('lodash.flatten');
 import prizes = require('./prizes');
 
+// requiring this puts it in global scope
+require('ngstorage');
+
 interface MonoScope extends ng.IScope {
   alpha: boolean;
-  owned: { [ x:string ]: boolean };
   progress: (ids: string[]) => number;
   progressType: (ids: string[]) => string;
+  toggle: (id: string) => void;
+  isOwned: (id: string) => boolean;
 }
 
-angular.module('monopoly', [require('angular-ui-bootstrap')])
-  .controller('MainController', ($scope: MonoScope) => {
+angular.module('monopoly', [
+  require('angular-ui-bootstrap'),
+  'ngStorage'
+])
+  .controller('MainController', ($scope: MonoScope, $localStorage) => {
     $scope.prizes = prizes.generateCodes();
     $scope.prizeIds = flatten($scope.prizes).sort();
 
-    $scope.owned = {};
+    $scope.storage = $localStorage.$default({
+      owned: {}
+    });
 
     $scope.alpha = false;
 
@@ -23,7 +32,7 @@ angular.module('monopoly', [require('angular-ui-bootstrap')])
       let res = 0;
 
       for (let id of ids) {
-        if ($scope.owned[id]) {
+        if ($scope.isOwned(id)) {
           res += 1;
         }
       }
@@ -47,11 +56,20 @@ angular.module('monopoly', [require('angular-ui-bootstrap')])
     };
 
     $scope.glyphClass = (id: string) => {
-      if ($scope.owned[id]) {
+      if ($scope.isOwned(id)) {
         return 'glyphicon-check';
       } else {
         return 'glyphicon-unchecked';
       }
+    };
+
+    $scope.isOwned = (id: string) => {
+      let owned: boolean = $scope.storage.owned[id];
+      return owned !== undefined;
+    };
+
+    $scope.toggle = (id: string) => {
+      $scope.storage.owned[id] = !$scope.storage.owned[id];
     };
 
     $scope.prizeNames = prizes.prizeNames;

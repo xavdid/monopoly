@@ -41,7 +41,7 @@ html(lang="en" ng-app="monopoly")
       .list-group(ng-if="alpha")
         button.list-group-item(
           ng-repeat="id in prizeIds"
-          ng-click="owned[id] = !owned[id]"
+          ng-click="toggle(id)"
           type="button"
         )
           | {{ id }}
@@ -56,7 +56,7 @@ html(lang="en" ng-app="monopoly")
           .list-group
             button.list-group-item(
               ng-repeat="id in prize"
-              ng-click="owned[id] = !owned[id]"
+              ng-click="toggle(id)"
               type="button"
             )
               | {{ id }}

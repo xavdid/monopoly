@@ -21,6 +21,7 @@
     "angular-ui-bootstrap": "^2.5.0",
     "browserify": "^14.1.0",
     "lodash.flatten": "^4.4.0",
+    "ngstorage": "^0.3.11",
     "pug-cli": "^1.0.0-alpha6",
     "typescript": "^2.2.1"
   },
