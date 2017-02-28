@@ -1,6 +1,7 @@
 # run a test, then deploy!
 
 language: node_js
+
 deploy:
   skip_cleanup: true
   provider: script

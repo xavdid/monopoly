@@ -2,7 +2,6 @@
 
 # uses https://github.com/tschaub/gh-pages
 
-
 if [ "$TRAVIS" = "true" ]
 then
   git config --global user.email "gh-pages@travis-ci"
