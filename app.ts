@@ -2,11 +2,15 @@ import angular = require('angular');
 import flatten = require('lodash.flatten');
 import prizes = require('./prizes');
 
+interface MonoScope extends ng.IScope {
+  alpha: boolean;
+  owned: { [ x:string ]: boolean };
+  progress: (ids: string[]) => number;
+  progressType: (ids: string[]) => string;
+}
 
 angular.module('monopoly', [require('angular-ui-bootstrap')])
-  .controller('MainController', ($scope: ng.IScope) => {
-    $scope.greeting = 'hiii';
-
+  .controller('MainController', ($scope: MonoScope) => {
     $scope.prizes = prizes.generateCodes();
     $scope.prizeIds = flatten($scope.prizes).sort();
 
@@ -28,7 +32,7 @@ angular.module('monopoly', [require('angular-ui-bootstrap')])
     };
 
     $scope.progressType = (ids: string[]) => {
-      const val: number = $scope.progress(ids);
+      const val = $scope.progress(ids);
       if (val === 0) {
         return null;
       } else if (val === 1) {
