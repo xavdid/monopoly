@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./scripts/test",
     "build": "./scripts/build",
     "clean": "rm -rf *.js dist",
     "deploy": "node_modules/.bin/gh-pages -d dist -t",

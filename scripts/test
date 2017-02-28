@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# basically, just verify the files built
+
+([ -f dist/index.html ] && [ -f dist/_bundle.js ]) || exit 1
