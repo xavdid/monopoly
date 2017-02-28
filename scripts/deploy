@@ -2,4 +2,10 @@
 
 # uses https://github.com/tschaub/gh-pages
 
-node_modules/.bin/gh-pages -d dist -t
+
+if [ "$TRAVIS" = "true" ]
+then
+  node_modules/.bin/gh-pages -d dist -t --repo https://$GH_TOKEN@github.com/xavdid/monopoly.git
+else
+  node_modules/.bin/gh-pages -d dist -t
+fi
