@@ -9,5 +9,5 @@ mkdir -p $DEST_PATH
 touch $DEST_PATH/.nojekyll
 
 tsc
-NODE_ENV=production DEST_PATH=$DEST_PATH ./scripts/jsbuild
+NODE_ENV=production DEST_PATH=$DEST_PATH ./scripts/bundle
 node_modules/.bin/pug index.pug -o $DEST_PATH
