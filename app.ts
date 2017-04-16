@@ -8,22 +8,26 @@ require('ngstorage');
 interface MonoScope extends ng.IScope {
   alpha: boolean;
   locked: boolean;
+  prizes: string[][];
+  prizeIds: string[];
   progress: (ids: string[]) => number;
   progressType: (ids: string[]) => string;
   toggle: (id: string) => void;
   isOwned: (id: string) => boolean;
+  backup: () => void;
 }
 
 angular.module('monopoly', [
   require('angular-ui-bootstrap'),
   'ngStorage'
 ])
-  .controller('MainController', ($scope: MonoScope, $localStorage) => {
+  .controller('MainController', ($scope: MonoScope, $localStorage, $http) => {
     $scope.prizes = prizes.generateCodes();
     $scope.prizeIds = flatten($scope.prizes).sort();
 
     $scope.storage = $localStorage.$default({
-      owned: {}
+      owned: {},
+      email: ''
     });
 
     $scope.alpha = false;
@@ -77,4 +81,19 @@ angular.module('monopoly', [
     };
 
     $scope.prizeNames = prizes.prizeNames;
+
+    $scope.backup = () => {
+      let url = 'https://hooks.zapier.com/hooks/catch/307533/18yq4v/';
+      $http.get(url, {
+        params: {
+          email: $scope.storage.email || 'vicky-email@flyingleap.com',
+          prizes: Object.keys($scope.storage.owned).filter(k => $scope.storage.owned[k]).join(',')
+        }
+      })
+      .then((resp: Response)=>{
+        console.log('backed up!');
+      }, (err: Response)=>{
+        console.log(err);
+      });
+    };
   });

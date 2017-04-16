@@ -21,7 +21,7 @@ html(lang="en" ng-app="monopoly")
       .prize-group { padding-top: 10px; }
 
       .controls {
-        padding-top: 2em;
+        padding: 2em 0;
         display: flex;
         justify-content: space-around;
       }
@@ -51,14 +51,18 @@ html(lang="en" ng-app="monopoly")
           label.btn.btn-default.btn-lg(ng-model='locked', uib-btn-radio="false")
             span.glyphicon.glyphicon-edit
 
+        button.btn.btn-primary(type="button" ng-click="backup()").
+          Backup
+
       .list-group(ng-if="alpha")
         button.list-group-item(
           ng-repeat="id in prizeIds"
           ng-click="toggle(id)"
           type="button"
         )
-          | <strong>{{ id.substr(0,2) }}</strong>{{ id.substr(2) }}
-          |
+          | <strong>{{ id.substr(0,2) }}</strong>
+          | {{ id.substr(2,2) }}
+          | <strong> {{ id.substr(4) }} </strong>
           span.glyphicon(ng-class="glyphClass(id)")
 
       .groups(ng-if="!alpha")
@@ -73,8 +77,8 @@ html(lang="en" ng-app="monopoly")
               ng-click="toggle(id)"
               type="button"
             )
-              | {{ id }}
-              |
+              | {{ id.substr(0,4) }}
+              | <strong> {{ id.substr(4) }} </strong>
               span.glyphicon(ng-class="glyphClass(id)")
 
     script(src="_bundle.js")
