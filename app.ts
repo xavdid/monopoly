@@ -7,6 +7,7 @@ require('ngstorage');
 
 interface MonoScope extends ng.IScope {
   alpha: boolean;
+  locked: boolean;
   progress: (ids: string[]) => number;
   progressType: (ids: string[]) => string;
   toggle: (id: string) => void;
@@ -26,6 +27,7 @@ angular.module('monopoly', [
     });
 
     $scope.alpha = false;
+    $scope.locked = true;
 
     // helpers
     $scope.progress = (ids: string[]) => {
@@ -68,6 +70,9 @@ angular.module('monopoly', [
     };
 
     $scope.toggle = (id: string) => {
+      if ($scope.locked && $scope.storage.owned[id]) {
+        return;
+      }
       $scope.storage.owned[id] = !$scope.storage.owned[id];
     };
 

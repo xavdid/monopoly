@@ -15,9 +15,16 @@ html(lang="en" ng-app="monopoly")
       button:focus { outline-style: none; }
       button.list-group-item { text-align: center; }
 
+      h1 { text-align: center; }
       .list-group .glyphicon { margin-left: 50%; }
 
       .prize-group { padding-top: 10px; }
+
+      .controls {
+        padding-top: 2em;
+        display: flex;
+        justify-content: space-around;
+      }
 
       @media (min-width: 768px) {
         .container {
@@ -25,18 +32,24 @@ html(lang="en" ng-app="monopoly")
         }
       }
 
+
+
   body(ng-controller="MainController")
     .container
       h1 Monopoly Prizes
 
-      .btn-group
-        label.btn.btn-default.btn-lg(ng-model='alpha', uib-btn-radio="true")
-          span.glyphicon.glyphicon-sort-by-alphabet
-        label.btn.btn-default.btn-lg(ng-model='alpha', uib-btn-radio="false")
-          span.glyphicon.glyphicon-sort-by-attributes-alt
+      .controls
+        .btn-group
+          label.btn.btn-default.btn-lg(ng-model='alpha', uib-btn-radio="true")
+            span.glyphicon.glyphicon-sort-by-alphabet
+          label.btn.btn-default.btn-lg(ng-model='alpha', uib-btn-radio="false")
+            span.glyphicon.glyphicon-sort-by-attributes-alt
 
-      h2.
-        Prizes
+        .btn-group
+          label.btn.btn-default.btn-lg(ng-model='locked', uib-btn-radio="true")
+            span.glyphicon.glyphicon-lock
+          label.btn.btn-default.btn-lg(ng-model='locked', uib-btn-radio="false")
+            span.glyphicon.glyphicon-edit
 
       .list-group(ng-if="alpha")
         button.list-group-item(
@@ -44,12 +57,13 @@ html(lang="en" ng-app="monopoly")
           ng-click="toggle(id)"
           type="button"
         )
-          | {{ id }}
+          | <strong>{{ id.substr(0,2) }}</strong>{{ id.substr(2) }}
           |
           span.glyphicon(ng-class="glyphClass(id)")
 
       .groups(ng-if="!alpha")
         .prize-group(ng-repeat="prize in prizes")
+          //- bold the first two letters
           h3.
             {{ prizeNames[prize[0].substr(0,2)] || prize[0].substr(0,2) }}
           uib-progressbar(value="progress(prize)" max="prize.length" type="{{progressType(prize)}}")
