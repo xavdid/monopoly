@@ -51,7 +51,7 @@ html(lang="en" ng-app="monopoly")
           label.btn.btn-default.btn-lg(ng-model='locked', uib-btn-radio="false")
             span.glyphicon.glyphicon-edit
 
-        button.btn.btn-primary(type="button" ng-click="backup()").
+        button.btn.btn-primary(type="button" ng-click="backup()" disabled).
           Backup
 
       .list-group(ng-if="alpha")
