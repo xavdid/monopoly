@@ -15,19 +15,19 @@
     "David Brownman <beamneocube@gmail.com> (https://davidbrownman.com)",
   "license": "ISC",
   "dependencies": {
-    "@types/angular": "^1.6.7",
-    "@types/lodash.flatten": "^4.4.1",
-    "@types/node": "^7.0.5",
-    "angular": "^1.6.2",
-    "angular-ui-bootstrap": "^2.5.0",
-    "browserify": "^14.1.0",
-    "lodash.flatten": "^4.4.0",
-    "ngstorage": "^0.3.11",
-    "pug-cli": "^1.0.0-alpha6",
+    "@types/angular": "1.6.7",
+    "@types/lodash.flatten": "4.4.1",
+    "@types/node": "7.0.5",
+    "angular": "1.6.2",
+    "angular-ui-bootstrap": "2.5.0",
+    "browserify": "14.1.0",
+    "lodash.flatten": "4.4.0",
+    "ngstorage": "0.3.11",
+    "pug-cli": "1.0.0-alpha6",
     "typescript": "2.2.1"
   },
   "devDependencies": {
-    "gh-pages": "^0.12.0",
-    "watchify": "^3.9.0"
+    "gh-pages": "0.12.0",
+    "watchify": "3.9.0"
   }
 }
