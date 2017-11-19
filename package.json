@@ -11,7 +11,8 @@
     "deploy": "./scripts/deploy"
   },
   "keywords": [],
-  "author": "David Brownman <beamneocube@gmail.com> (https://davidbrownman.com)",
+  "author":
+    "David Brownman <beamneocube@gmail.com> (https://davidbrownman.com)",
   "license": "ISC",
   "dependencies": {
     "@types/angular": "^1.6.7",
@@ -23,7 +24,7 @@
     "lodash.flatten": "^4.4.0",
     "ngstorage": "^0.3.11",
     "pug-cli": "^1.0.0-alpha6",
-    "typescript": "^2.2.1"
+    "typescript": "2.2.1"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
